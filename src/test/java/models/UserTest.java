@@ -18,18 +18,23 @@ class UserTest {
     }
 
     @Test
-    @DisplayName("Users Instantiates Correctly.")
+    @DisplayName("User Instantiates Correctly.")
     public void testInstanceOfAnimal_true(){
         User testUser = setUpNewUser();
         assertEquals(true, testUser instanceof User);
     }
 
-
+    @Test
+    @DisplayName("User Instantiates Correctly the name Betty.")
+    public void getName_animalInstantiatesWithName_Betty() {
+        User testUser = setUpNewUser();
+        assertEquals("Betty", testUser.getName());
+    }
 
 
     //helper
     private User setUpNewUser() {
-        return new User ();
+        return new User ("Betty", "lawyer", 1,"suits up");
     }
 
 }
