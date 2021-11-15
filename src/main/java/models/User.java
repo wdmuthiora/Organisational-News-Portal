@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Objects;
+
 public class User {
 
     //properties
@@ -16,6 +18,19 @@ public class User {
         this.position = position;
         this.departmentId = departmentId;
         this.role = role;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return id == user.id && getDepartmentId() == user.getDepartmentId() && getName().equals(user.getName()) && getPosition().equals(user.getPosition()) && getRole().equals(user.getRole());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, getName(), getPosition(), getDepartmentId(), getRole());
     }
 
     //getters
@@ -35,11 +50,21 @@ public class User {
         return role;
     }
 
+    //setters
+
     public void setName(String name) {
         this.name = name;
     }
 
+    public void setPosition(String position) {
+        this.position = position;
+    }
 
-    //setters
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
+    }
 
+    public void setUser(String role) {
+        this.role = role;
+    }
 }

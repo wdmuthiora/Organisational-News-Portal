@@ -61,6 +61,28 @@ class UserTest {
         assertEquals("cow", testUser.getName());
     }
 
+    @Test
+    @DisplayName("User Instantiates Correctly and sets position to spy.")
+    public void setPosition_userInstantiatesAndSetsPosition_spy() {
+        User testUser = setUpNewUser();
+        testUser.setPosition("spy");
+        assertEquals("spy", testUser.getPosition());
+    }
+
+    @Test
+    @DisplayName("User Instantiates Correctly and sets departmentId to 2.")
+    public void setDepartmentId_userInstantiatesAndSetsDepartmentId_2() {
+        User testUser = setUpNewUser();
+        testUser.setDepartmentId(2);
+        assertEquals(2, testUser.getDepartmentId());
+    }
+    @Test
+    @DisplayName("User Instantiates Correctly and sets role to tear-down.")
+    public void setRole_userInstantiatesAndSetsRole_tearDown() {
+        User testUser = setUpNewUser();
+        testUser.setUser("tear-down");
+        assertEquals("tear-down", testUser.getRole());
+    }
 
     //helper
     private User setUpNewUser() {
