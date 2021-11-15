@@ -18,12 +18,16 @@ public class User {
         this.role = role;
     }
 
+    //getters
     public String getName() {
         return name;
     }
 
+    public String getPosition() {
+        return position;
+    }
 
-    //getters
+
     //setters
 
 }

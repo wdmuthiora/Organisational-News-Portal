@@ -26,10 +26,18 @@ class UserTest {
 
     @Test
     @DisplayName("User Instantiates Correctly the name Betty.")
-    public void getName_animalInstantiatesWithName_Betty() {
+    public void getName_userInstantiatesWithName_Betty() {
         User testUser = setUpNewUser();
         assertEquals("Betty", testUser.getName());
     }
+
+    @Test
+    @DisplayName("User Instantiates Correctly the position lawyer.")
+    public void getPosition_userInstantiatesWithPosition_Lawyer() {
+        User testUser = setUpNewUser();
+        assertEquals("lawyer", testUser.getPosition());
+    }
+
 
 
     //helper
