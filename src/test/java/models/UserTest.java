@@ -76,6 +76,7 @@ class UserTest {
         testUser.setDepartmentId(2);
         assertEquals(2, testUser.getDepartmentId());
     }
+
     @Test
     @DisplayName("User Instantiates Correctly and sets role to tear-down.")
     public void setRole_userInstantiatesAndSetsRole_tearDown() {

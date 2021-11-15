@@ -16,4 +16,28 @@ public class News {
         this.title = title;
         this.description = description;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getBlog() {
+        return newsType;
+    }
+
+    public int getDepartmentId() {
+        return departmentId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    //getters
+
+    //setters
 }
