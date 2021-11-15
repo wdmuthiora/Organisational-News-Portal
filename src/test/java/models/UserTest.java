@@ -38,6 +38,19 @@ class UserTest {
         assertEquals("lawyer", testUser.getPosition());
     }
 
+    @Test
+    @DisplayName("User Instantiates Correctly the departmentId 1.")
+    public void getDepartmentId_userInstantiatesWithDepartmentId_1() {
+        User testUser = setUpNewUser();
+        assertEquals(1, testUser.getDepartmentId());
+    }
+
+    @Test
+    @DisplayName("User Instantiates Correctly the role suits up.")
+    public void getRole_userInstantiatesWithRole_suits_up() {
+        User testUser = setUpNewUser();
+        assertEquals("suits up", testUser.getRole());
+    }
 
 
     //helper

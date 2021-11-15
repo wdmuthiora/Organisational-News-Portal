@@ -27,6 +27,14 @@ public class User {
         return position;
     }
 
+    public int getDepartmentId() {
+        return departmentId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
 
     //setters
 
