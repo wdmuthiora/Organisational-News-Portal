@@ -35,6 +35,10 @@ public class User {
         return role;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
     //setters
 

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
@@ -50,6 +51,14 @@ class UserTest {
     public void getRole_userInstantiatesWithRole_suits_up() {
         User testUser = setUpNewUser();
         assertEquals("suits up", testUser.getRole());
+    }
+
+    @Test
+    @DisplayName("User Instantiates Correctly and sets name to Cow.")
+    public void setName_userInstantiatesAndSetsName_Cow() {
+        User testUser = setUpNewUser();
+        testUser.setName("cow");
+        assertEquals("cow", testUser.getName());
     }
 
 
