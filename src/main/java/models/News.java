@@ -1,6 +1,7 @@
 package models;
 
 public class News {
+
     private int id;
     private String newsType;
     private int departmentId;
@@ -17,6 +18,7 @@ public class News {
         this.description = description;
     }
 
+    //getters
     public int getId() {
         return id;
     }
@@ -37,7 +39,24 @@ public class News {
         return description;
     }
 
-    //getters
-
     //setters
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNewsType(String newsType) {
+        this.newsType = newsType;
+    }
+
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
