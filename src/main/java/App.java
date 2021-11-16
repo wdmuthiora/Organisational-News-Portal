@@ -4,6 +4,7 @@ import dao.Sql2oNewsDao;
 import dao.Sql2oUserDao;
 import exceptions.ApiException;
 import models.Departments;
+import models.News;
 import models.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -129,6 +130,13 @@ public class App {
             sql2oDepartmentsDao.add(departments);
             response.status(201);
             return gson.toJson(departments);
+        });
+
+        post("/news/new/general","application/json",(request, response) -> {
+            News news = gson.fromJson(request.body(), News.class);
+            sql2oNewsDao.addNews(news);
+            response.status(201);
+            return gson.toJson(news);
         });
 
         //FILTERS
