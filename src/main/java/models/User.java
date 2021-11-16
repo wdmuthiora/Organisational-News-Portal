@@ -20,19 +20,6 @@ public class User {
         this.role = role;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return id == user.id && getDepartmentId() == user.getDepartmentId() && getName().equals(user.getName()) && getPosition().equals(user.getPosition()) && getRole().equals(user.getRole());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, getName(), getPosition(), getDepartmentId(), getRole());
-    }
-
     //getters
     public String getName() {
         return name;
@@ -66,5 +53,18 @@ public class User {
 
     public void setUser(String role) {
         this.role = role;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return id == user.id && getDepartmentId() == user.getDepartmentId() && getName().equals(user.getName()) && getPosition().equals(user.getPosition()) && getRole().equals(user.getRole());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, position, departmentId, role);
     }
 }
