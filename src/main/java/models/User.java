@@ -4,6 +4,10 @@ import java.util.Objects;
 
 public class User {
 
+    public int getId() {
+        return id;
+    }
+
     //properties
     private int id;
     private String name;
@@ -12,7 +16,6 @@ public class User {
     private String role;
 
     //constructor
-
     public User(String name, String position, int departmentId, String role) {
         this.name = name;
         this.position = position;

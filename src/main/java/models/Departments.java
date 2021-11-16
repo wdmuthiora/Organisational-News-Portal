@@ -13,6 +13,7 @@ public class Departments {
     public Departments(String name, String description) {
         this.name = name;
         this.description = description;
+        this.size = 0;
     }
 
     //getters
