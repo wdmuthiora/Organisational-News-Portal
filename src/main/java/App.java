@@ -3,6 +3,7 @@ import dao.Sql2oDepartmentsDao;
 import dao.Sql2oNewsDao;
 import dao.Sql2oUserDao;
 import exceptions.ApiException;
+import models.Departments;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import java.util.HashMap;
@@ -95,6 +96,22 @@ public class App {
             }
             else {
                 return "{\"message\":\"I'm sorry, but no news are currently listed in the database.\"}";
+            }
+        });
+
+        get("/news/department/:id","application/json",(request, response) -> {
+
+            int id = Integer.parseInt(request.params("id"));
+            Departments departments = sql2oDepartmentsDao.findById(id);
+            if(departments == null){
+                throw new ApiException(404, String.format("No department with the id: \"%s\" exists",
+                        request.params("id")));
+            }
+            if(sql2oDepartmentsDao.getDepartmentNews(id).size()>0){
+                return gson.toJson(sql2oDepartmentsDao.getDepartmentNews(id));
+            }
+            else {
+                return "{\"message\":\"I'm sorry, but no news in this department.\"}";
             }
         });
 
