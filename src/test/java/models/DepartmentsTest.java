@@ -20,13 +20,34 @@ class DepartmentsTest {
 
     @Test
     @DisplayName("Departments Instantiates Correctly.")
-    public void testInstanceOfAnimal_true(){
+    public void testInstanceOfDepartments_true(){
         Departments testDepartments = setUpDepartments();
         assertEquals(true, testDepartments instanceof Departments);
     }
 
+    @Test
+    @DisplayName("Departments Instantiates Correctly the name Legal.")
+    public void getName_RetrievesName_Legal() {
+        Departments testDepartments = setUpDepartments();
+        assertEquals("Legal", testDepartments.getName());
+    }
+
+    @Test
+    @DisplayName("Departments Instantiates Correctly the description lawyers.")
+    public void getDescription_RetrievesDescription_lawyers() {
+        Departments testDepartments = setUpDepartments();
+        assertEquals("lawyers", testDepartments.getDescription());
+    }
+
+    @Test
+    @DisplayName("Departments Instantiates Correctly the id 1.")
+    public void getId_RetrievesId_1() {
+        Departments testDepartments = setUpDepartments();
+        assertEquals("lawyers", testDepartments.getId());
+    }
+
     //helper
     private Departments setUpDepartments() {
-        return new Departments ("Betty", "lawyer");
+        return new Departments ("Legal", "lawyers");
     }
 }
