@@ -69,6 +69,19 @@ public class Sql2oNewsDao implements NewsDao {
         }
     }
 
-
+    @Override
+    public void clearAll() {
+        try (Connection con=sql2o.open()){
+            String sql = "DELETE FROM departments";
+            String sqlNews = "DELETE FROM news";
+            String sqlDeleteUsersDepartments = "DELETE FROM users_departments";
+            con.createQuery(sql).executeUpdate();
+            con.createQuery(sqlDeleteUsersDepartments).executeUpdate();
+            con.createQuery(sqlNews).executeUpdate();
+        }catch (Sql2oException ex){
+            System.out.println(ex);
+            System.out.println("Failed to clear all news entries.");
+        }
+    }
 
 }
