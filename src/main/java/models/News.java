@@ -21,7 +21,7 @@ public class News {
         this.departmentId = 0;
     }
 
-    public News(String title, String description,int department_id, int user_id){
+    public News(String title, String description, int department_id, int user_id){
         this.title = title;
         this.description = description;
         this.userId=user_id;

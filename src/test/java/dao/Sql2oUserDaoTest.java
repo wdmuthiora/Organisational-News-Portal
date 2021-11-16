@@ -15,6 +15,8 @@ public class Sql2oUserDaoTest {
 
     @Before
     public void setUp() throws Exception {
+        String connectionString = "jdbc:postgresql://localhost:5432/organisational_news_portal_test";
+        Sql2o sql2o = new Sql2o(connectionString, "moringa", "33234159");
     }
 
     @After
