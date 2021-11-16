@@ -38,6 +38,9 @@ public class User {
     }
 
     //setters
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -54,6 +57,7 @@ public class User {
     public void setUser(String role) {
         this.role = role;
     }
+
 
     @Override
     public boolean equals(Object o) {
