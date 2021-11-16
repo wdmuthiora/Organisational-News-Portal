@@ -79,6 +79,16 @@ public class App {
             }
         });
 
+        get("/department/:id/users","application/json",(request, response) -> {
+            int id = Integer.parseInt(request.params("id"));
+            if(sql2oDepartmentsDao.getAllUsersInDepartment(id).size()>0){
+                return gson.toJson(sql2oDepartmentsDao.getAllUsersInDepartment(id));
+            }
+            else {
+                return "{\"message\":\"I'm sorry, but department has no users.\"}";
+            }
+        });
+
         get("/news/general","application/json",(request, response) -> {
             if(sql2oNewsDao.getAll().size()>0){
                 return gson.toJson(sql2oNewsDao.getAll());
