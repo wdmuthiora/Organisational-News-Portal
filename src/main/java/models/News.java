@@ -10,16 +10,9 @@ public class News {
     private int userId;
     private String title;
     private String description;
-    private final String TYPE_OF_NEWS="general";
+    private final String TYPE_OF_NEWS = "general";
 
-//    public News(String title, String description, int userId) {
-//        this.id=  id;
-//        this.newsType = newsType;
-//        this.departmentId = departmentId;
-//        this.title = title;
-//        this.description = description;
-//    }
-
+   //constructors
     public News(String title, String description, int user_id) {
         this.title = title;
         this.description = description;

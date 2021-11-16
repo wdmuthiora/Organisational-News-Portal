@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Departments {
 
+    private int id;
     private String name;
     private String description;
-    private int id;
-        private int size;
+    private int size;
 
     //constructor
     public Departments(String name, String description) {
