@@ -87,4 +87,5 @@ public class News {
     public int hashCode() {
         return Objects.hash(id, newsType, departmentId, userId, title, description, TYPE_OF_NEWS);
     }
+
 }
