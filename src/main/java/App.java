@@ -49,12 +49,33 @@ public class App {
             }
         });
 
+        get("/user/:id/departments","application/json",(request, response) -> {
+            int id = Integer.parseInt(request.params("id"));
+            if(sql2oUserDao.getAllUserDepartments(id).size()>0){
+                return gson.toJson(sql2oUserDao.getAllUserDepartments(id));
+            }
+            else {
+                return "{\"message\":\"I'm sorry, but user is in no department.\"}";
+            }
+        });
+
         get("/departments","application/json",(request, response) -> {
             if(sql2oDepartmentsDao.getAll().size()>0){
                 return gson.toJson(sql2oDepartmentsDao.getAll());
             }
             else {
                 return "{\"message\":\"I'm sorry, but no departments are currently listed in the database.\"}";
+            }
+        });
+
+        get("/department/:id","application/json",(request, response) -> {
+            int id = Integer.parseInt(request.params("id"));
+            if(sql2oDepartmentsDao.findById(id) == null){
+                throw new ApiException(404, String.format("No department with the id: \"%s\" exists",
+                        request.params("id")));
+            }
+            else {
+                return gson.toJson(sql2oDepartmentsDao.findById(id));
             }
         });
 
@@ -67,15 +88,6 @@ public class App {
             }
         });
 
-        get("/user/:id/departments","application/json",(request, response) -> {
-            int id = Integer.parseInt(request.params("id"));
-            if(sql2oUserDao.getAllUserDepartments(id).size()>0){
-                return gson.toJson(sql2oUserDao.getAllUserDepartments(id));
-            }
-            else {
-                return "{\"message\":\"I'm sorry, but user is in no department.\"}";
-            }
-        });
 
 
 
