@@ -1,3 +1,4 @@
+SET MODE PostgreSQL;
 CREATE DATABASE organisational_news_portal;
 \c organisational_news_portal
 
