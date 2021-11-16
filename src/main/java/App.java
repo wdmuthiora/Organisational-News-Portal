@@ -4,6 +4,7 @@ import dao.Sql2oNewsDao;
 import dao.Sql2oUserDao;
 import exceptions.ApiException;
 import models.Departments;
+import models.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import java.util.HashMap;
@@ -115,10 +116,13 @@ public class App {
             }
         });
 
-
-
-
         //post routes
+        post("/user/new","application/json",(request, response) -> {
+            User user = gson.fromJson(request.body(), User.class);
+            sql2oUserDao.add(user);
+            response.status(201);
+            return gson.toJson(user);
+        });
 
         //FILTERS
         exception(ApiException.class, (exception, request, response) -> {
