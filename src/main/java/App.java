@@ -14,7 +14,7 @@ public class App {
     public static void main(String[] args) {
 
         Sql2oNewsDao sql2oNewsDao;
-        Sql2oUserDao sql2oUsersDao;
+        Sql2oUserDao sql2oUserDao;
         Sql2oDepartmentsDao sql2oDepartmentsDao;
         Connection conn;
         Gson gson = new Gson();
@@ -25,20 +25,36 @@ public class App {
 
         sql2oDepartmentsDao = new Sql2oDepartmentsDao(sql2o);
         sql2oNewsDao = new Sql2oNewsDao(sql2o);
-        sql2oUsersDao = new Sql2oUserDao(sql2o);
+        sql2oUserDao = new Sql2oUserDao(sql2o);
         conn = sql2o.open();
-
 
         //get routes
         get("/users", "application/json", (request, response) -> {
             if(sql2oDepartmentsDao.getAll().size() > 0){
-                return gson.toJson(sql2oUsersDao.getAll());
+                return gson.toJson(sql2oUserDao.getAll());
             }
             else {
                 return "{\"message\":\"I'm sorry, but no users are currently listed in the database.\"}";
             }
         });
 
+        get("/departments","application/json",(request, response) -> {
+            if(sql2oDepartmentsDao.getAll().size()>0){
+                return gson.toJson(sql2oDepartmentsDao.getAll());
+            }
+            else {
+                return "{\"message\":\"I'm sorry, but no departments are currently listed in the database.\"}";
+            }
+        });
+
+        get("/news/general","application/json",(request, response) -> {
+            if(sql2oNewsDao.getAll().size()>0){
+                return gson.toJson(sql2oNewsDao.getAll());
+            }
+            else {
+                return "{\"message\":\"I'm sorry, but no news are currently listed in the database.\"}";
+            }
+        });
 
 
 
