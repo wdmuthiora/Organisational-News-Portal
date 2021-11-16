@@ -12,12 +12,28 @@ public class News {
     private String description;
     private final String TYPE_OF_NEWS="general";
 
-    public News(int id, String newsType, int departmentId, String title, String description) {
-        this.id=  id;
-        this.newsType = newsType;
-        this.departmentId = departmentId;
+//    public News(String title, String description, int userId) {
+//        this.id=  id;
+//        this.newsType = newsType;
+//        this.departmentId = departmentId;
+//        this.title = title;
+//        this.description = description;
+//    }
+
+    public News(String title, String description, int user_id) {
         this.title = title;
         this.description = description;
+        this.userId = user_id;
+        this.newsType = TYPE_OF_NEWS;
+        this.departmentId = 0;
+    }
+
+    public News(String title, String description,int department_id, int user_id){
+        this.title = title;
+        this.description = description;
+        this.userId=user_id;
+        this.departmentId = department_id;
+        this.newsType = "department";
     }
 
     //getters
@@ -25,7 +41,11 @@ public class News {
         return id;
     }
 
-    public String getBlog() {
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getNewsType() {
         return newsType;
     }
 

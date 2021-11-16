@@ -1,5 +1,6 @@
 package models;
 
+import org.h2.util.New;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -26,10 +27,17 @@ class NewsTest {
     }
 
     @Test
+    @DisplayName("News Retrieves UserId 1.")
+    public void getUserId_RetrievesUserId_1() {
+        News testNews = setUpNews();
+        assertEquals(1, testNews.getUserId());
+    }
+
+    @Test
     @DisplayName("News Instantiates Correctly the Id 1.")
     public void getId_RetrievesId_1() {
         News testNews = setUpNews();
-        assertEquals(1, testNews.getId());
+        assertEquals(0, testNews.getId());
     }
 
     @Test
@@ -41,10 +49,10 @@ class NewsTest {
     }
 
     @Test
-    @DisplayName("News Instantiates Correctly the newsType Blog")
-    public void getNewsType_RetrievesNewsType_Blog() {
+    @DisplayName("News Instantiates Correctly the newsType general")
+    public void getNewsType_RetrievesNewsType_general() {
         News testNews = setUpNews();
-        assertEquals("Blog", testNews.getBlog());
+        assertEquals("general", testNews.getNewsType());
     }
 
     @Test
@@ -52,14 +60,14 @@ class NewsTest {
     public void SetNewsType_SetsNewsType_Alert() {
         News testNews = setUpNews();
         testNews.setNewsType("Alert");
-        assertEquals("Alert", testNews.getBlog());
+        assertEquals("Alert", testNews.getNewsType());
     }
 
     @Test
     @DisplayName("News Instantiates Correctly the newsType Blog")
     public void getDepartment_RetrievesDepartmentId_1() {
         News testNews = setUpNews();
-        assertEquals(1, testNews.getDepartmentId());
+        assertEquals(0, testNews.getDepartmentId());
     }
 
     @Test
@@ -74,7 +82,7 @@ class NewsTest {
     @DisplayName("News Instantiates Correctly the title news tonight")
     public void getTitle_RetrievesTitle_news_tonight1() {
         News testNews = setUpNews();
-        assertEquals("news tonight", testNews.getTitle());
+        assertEquals("title", testNews.getTitle());
     }
 
     @Test
@@ -86,10 +94,10 @@ class NewsTest {
     }
 
     @Test
-    @DisplayName("News Instantiates Correctly the description nonsense")
-    public void getDescription_newsInstantiatesWithDescription_some_nonsense() {
+    @DisplayName("News Instantiates Correctly the description description")
+    public void getDescription_newsInstantiatesWithDescription_description() {
         News testNews = setUpNews();
-        assertEquals("nonsense", testNews.getDescription());
+        assertEquals("description", testNews.getDescription());
     }
 
     @Test
@@ -101,8 +109,12 @@ class NewsTest {
     }
 
  //helper
-    private News setUpNews() {
-        return new News (1, "Blog", 1, "news tonight","nonsense");
+
+    private News setUpNews2(){
+        return new  News("title", "description", 1, 1);
+    }
+    private News setUpNews(){
+        return new News("title", "description", 1);
     }
 
 }
