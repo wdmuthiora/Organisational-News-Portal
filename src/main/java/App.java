@@ -124,6 +124,13 @@ public class App {
             return gson.toJson(user);
         });
 
+        post("/departments/new","application/json",(request, response) -> {
+            Departments departments = gson.fromJson(request.body(), Departments.class);
+            sql2oDepartmentsDao.add(departments);
+            response.status(201);
+            return gson.toJson(departments);
+        });
+
         //FILTERS
         exception(ApiException.class, (exception, request, response) -> {
             ApiException err = exception;
