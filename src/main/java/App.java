@@ -38,6 +38,17 @@ public class App {
             }
         });
 
+        get("/user/:id", "application/json", (request, response) -> {
+            int id=Integer.parseInt(request.params("id"));
+            if(sql2oUserDao.findById(id) == null){
+                throw new ApiException(404, String.format("No user with the id: \"%s\" exists",
+                        request.params("id")));
+            }
+            else {
+                return gson.toJson(sql2oUserDao.findById(id));
+            }
+        });
+
         get("/departments","application/json",(request, response) -> {
             if(sql2oDepartmentsDao.getAll().size()>0){
                 return gson.toJson(sql2oDepartmentsDao.getAll());
