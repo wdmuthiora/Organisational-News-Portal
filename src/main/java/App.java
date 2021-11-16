@@ -39,7 +39,7 @@ public class App {
         });
 
         get("/user/:id", "application/json", (request, response) -> {
-            int id=Integer.parseInt(request.params("id"));
+            int id = Integer.parseInt(request.params("id"));
             if(sql2oUserDao.findById(id) == null){
                 throw new ApiException(404, String.format("No user with the id: \"%s\" exists",
                         request.params("id")));
@@ -64,6 +64,16 @@ public class App {
             }
             else {
                 return "{\"message\":\"I'm sorry, but no news are currently listed in the database.\"}";
+            }
+        });
+
+        get("/user/:id/departments","application/json",(request, response) -> {
+            int id = Integer.parseInt(request.params("id"));
+            if(sql2oUserDao.getAllUserDepartments(id).size()>0){
+                return gson.toJson(sql2oUserDao.getAllUserDepartments(id));
+            }
+            else {
+                return "{\"message\":\"I'm sorry, but user is in no department.\"}";
             }
         });
 
