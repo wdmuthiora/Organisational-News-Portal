@@ -8,8 +8,7 @@ import org.sql2o.Sql2o;
 import java.util.HashMap;
 import java.util.Map;
 
-import static spark.Spark.after;
-import static spark.Spark.exception;
+import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
@@ -23,6 +22,27 @@ public class App {
         //setup Local connection
         String connectionString = "jdbc:postgresql://localhost:5432/organisational_news_portal";
         Sql2o sql2o = new Sql2o(connectionString, "moringa", "1234567890");
+
+        sql2oDepartmentsDao = new Sql2oDepartmentsDao(sql2o);
+        sql2oNewsDao = new Sql2oNewsDao(sql2o);
+        sql2oUsersDao = new Sql2oUserDao(sql2o);
+        conn = sql2o.open();
+
+
+        //get routes
+        get("/users", "application/json", (request, response) -> {
+            if(sql2oDepartmentsDao.getAll().size() > 0){
+                return gson.toJson(sql2oUsersDao.getAll());
+            }
+            else {
+                return "{\"message\":\"I'm sorry, but no users are currently listed in the database.\"}";
+            }
+        });
+
+
+
+
+        //post routes
 
         //FILTERS
         exception(ApiException.class, (exception, request, response) -> {
